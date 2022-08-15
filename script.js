@@ -1,10 +1,12 @@
+// declearing an object for storing the functions and variables that will be necessary for using the API
 let weather = {
-    apiKey: "f289573d646ae372825cfedf968e1c4b",
+    
+    apiKey: "f289573d646ae372825cfedf968e1c4b", //My API key from openweathermap 
     fetchWeather: function (city) {
       fetch(
         "https://api.openweathermap.org/data/2.5/weather?q=" +
           city +
-          "&units=metric&appid=" +
+          "&units=metric&appid=" + //format for displaying the data 
           this.apiKey
       )
         .then((response) => {
@@ -16,24 +18,35 @@ let weather = {
         })
         .then((data) => this.displayWeather(data));
     },
-    displayWeather: function (data) {
-      const { name } = data;
-      const { icon, description } = data.weather[0];
+    //function that displays Weather 
+    displayWeather: function (data) {       
+       const { name } = data;
+      const { icon, description } = data.weather[0]; //gets the firsy element of data.weather object 
       const { temp, humidity } = data.main;
       const { speed } = data.wind;
-      document.querySelector(".city").innerText = "Weather in " + name;
+      document.querySelector(".city").innerText = "Weather in " + name; //displays the info retrieve from the API to the page  
       document.querySelector(".icon").src =
         "https://openweathermap.org/img/wn/" + icon + ".png";
+
       document.querySelector(".description").innerText = description;
+
       document.querySelector(".temp").innerText = temp + "°C";
+
       document.querySelector(".humidity").innerText =
         "Humidity: " + humidity + "%";
+
       document.querySelector(".wind").innerText =
-        "Wind speed: " + speed + " km/h";
+        "Wind speed: " + speed + " km/h";  
+
+        //the function that handles wrong inputs or mistakes
       document.querySelector(".weather").classList.remove("loading");
+
+      //post generic images clued from upsplash.com
       document.body.style.backgroundImage =
         "url('https://source.unsplash.com/1600x900/?" + name + "')";
     },
+
+    //function for the search button
     search: function () {
       this.fetchWeather(document.querySelector(".search-bar").value);
     },
@@ -43,14 +56,15 @@ let weather = {
     weather.search();
   });
   
-  document
-    .querySelector(".search-bar")
+  //this function takes in the event as a params 
+  document.querySelector(".search-bar")
     .addEventListener("keyup", function (event) {
       if (event.key == "Enter") {
         weather.search();
       }
     });
   
-  weather.fetchWeather("Cape town");
+    //the functions that is been called when the page reloads
+  weather.fetchWeather("ikeja");
      
   

@@ -13,6 +13,7 @@
     font-size: 120%;
   }
   
+    /* style for the card holding all functions centered at the middle*/ 
   .card {
     background: #000000d0;
     color: white;
@@ -23,6 +24,7 @@
     margin: 1em;
   }
   
+  /* style for the search box */
   .search {
     display: flex;
     align-items: center;
