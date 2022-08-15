@@ -1,5 +1,6 @@
 
-  
+   
+   /* made the Body of the content a flexbox centered at the middle of the landing page*/
   body {
     display: flex;
     justify-content: center;
