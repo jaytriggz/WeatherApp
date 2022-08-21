@@ -14,14 +14,14 @@ let weather = {
             alert("No weather found.");
             throw new Error("No weather found.");
           }
-          return response.json();
+          return response.json();  //response 
         })
         .then((data) => this.displayWeather(data));
     },
     //function that displays Weather 
     displayWeather: function (data) {       
        const { name } = data;
-      const { icon, description } = data.weather[0]; //gets the firsy element of data.weather object 
+      const { icon, description } = data.weather[0]; //gets the first element of data.weather object 
       const { temp, humidity } = data.main;
       const { speed } = data.wind;
       document.querySelector(".city").innerText = "Weather in " + name; //displays the info retrieve from the API to the page  
