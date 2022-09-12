@@ -6,7 +6,7 @@ let weather = {
       fetch(
         "https://api.openweathermap.org/data/2.5/weather?q=" +
           city +
-          "&units=metric&appid=" + //format for displaying the data 
+          "&units=metric&appid=" + //fetching the needed data
           this.apiKey
       )
         .then((response) => {
